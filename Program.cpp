@@ -5,9 +5,11 @@
 #include <string>
 #include <list>
 #include <iterator>
+#include <stdlib.h>
+
 using namespace std;
 
-// temporary for developing reasons
+// temporary for developing
 int memo[10][10];
 
 int T(int n, int m, std::list<int> A, std::list<int> B){
@@ -39,19 +41,19 @@ int T(int n, int m, std::list<int> A, std::list<int> B){
         int leftmost_sum = A.front() + B.front();
         if (leftmost_sum > memo[n][m])
             memo[n][m] = leftmost_sum;
-        }
+    }
 
     return memo[n][m];
 }
 
-//get size input
+//get size input (line 1 of input file)
 void getInput(int *size1, int *size2, fstream *mFile){
     *mFile >> *size1 >> *size2;
 }
 
-//get array input
+//get array input (lines 2 nd 3 of input file)
 void getInput(int size, std::list<int> *mList, fstream *mFile){
-    for(int i = 0; i <= size; i++) {
+    for(int i = 0; i < size; i++) {
         int j;
         *mFile >> j;
         mList->push_back(j);
@@ -60,12 +62,17 @@ void getInput(int size, std::list<int> *mList, fstream *mFile){
 
 int main()
 {   
-    fstream mFile; mFile.open("sample-input.txt");
-    int n, m; std::list<int> A, B;
+    int n, m;
+    list<int> A, B;
+    fstream mFile; 
+    
+    mFile.open("input.txt");
     getInput(&n, &m, &mFile);
     getInput(n, &A, &mFile);
     getInput(m, &B, &mFile);
-    
+    mFile.close();
+
+    // cout<< "n = " << n << "\nm = " << m << "\nA = " << A.back() << "\nB = " << B.back() << endl;
+
+
 }
-
-
