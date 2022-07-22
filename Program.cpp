@@ -10,7 +10,7 @@
 using namespace std;
 
 // temporary for developing
-int memo[10][10];
+int memo[10][10] { 0 };
 int original_N, original_M { 0 };
 
 int T(int n, int m, std::list<int>* A, std::list<int>* B){
@@ -78,7 +78,7 @@ void getInput(int size, std::list<int> *mList, fstream *mFile){
 }
 
 void printOutput(std::list<int> A, std::list<int> B) {
-    cout << endl << "A: ";
+    cout << endl << "OUTPUT TABLES A AND B" << endl << "A: ";
     for (int a_value : A) {
         cout << a_value << " ";
     }
@@ -87,6 +87,18 @@ void printOutput(std::list<int> A, std::list<int> B) {
         cout << b_value << " ";
     }
     cout << endl << endl;
+}
+
+void printMemo() {
+    cout << endl << "MEMO TABLE" << endl;
+    for (int i = 0; i < 10; i++) {
+        if (i == 0) { cout << "  1 2 3 4 5 6 7 8 9 10 " << endl; }
+        for (int j = 0; j < 10; j++) {
+            if (j == 0) { cout << i + 1 << " "; }
+            cout << memo[i][j] << " ";
+        }
+        cout << endl;
+    }
 }
 
 int main()
@@ -104,7 +116,9 @@ int main()
     mFile.close();
     puts("testifg");
     printOutput(A, B);
+    printMemo();
     cout << T(n, m, &A, &B) << endl;
     printOutput(A, B);
+    printMemo();
     // cout<< "n = " << n << "\nm = " << m << "\nA = " << (*A).back() << "\nB = " << (*B).back() << endl;
 }
