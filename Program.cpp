@@ -5,11 +5,30 @@
 #include <list>
 #include <iterator>
 #include <stdlib.h>
-#include <string_view>
 #include <map>
 #include <vector>
 using namespace std;
 
+void printOutput(std::list<int> A, std::list<int> B);
+void extendT(list<int> *A, list<int> *B, map<pair<int, int>, pair<int, int> > E, int N, int M);
+int T(int n, int m, int N, int M, std::list<int> *A, std::list<int> *B, vector<vector<int>> *memo, map<pair<int, int>, pair<int, int> > *E);
+void Wrapper(int n, int m, list<int> A, list<int> B);
+void getInput(int *size1, int *size2, fstream *mFile);
+void getInput(int size, std::list<int> *mList, fstream *mFile);
+
+int main()
+{
+    int n, m;
+    list<int> A, B;
+    fstream mFile;
+
+    mFile.open("input.txt");
+    getInput(&n, &m, &mFile);
+    getInput(n, &A, &mFile);
+    getInput(m, &B, &mFile);
+    mFile.close();
+    Wrapper(n, m, A, B);
+}
 
 
 void printOutput(std::list<int> A, std::list<int> B)
@@ -163,19 +182,4 @@ void getInput(int size, std::list<int> *mList, fstream *mFile)
         *mFile >> j;
         mList->push_back(j);
     }
-}
-
-
-int main()
-{
-    int n, m;
-    list<int> A, B;
-    fstream mFile;
-
-    mFile.open("input.txt");
-    getInput(&n, &m, &mFile);
-    getInput(n, &A, &mFile);
-    getInput(m, &B, &mFile);
-    mFile.close();
-    Wrapper(n, m, A, B);
 }
