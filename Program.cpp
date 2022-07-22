@@ -18,7 +18,7 @@ int T(int n, int m, std::list<int> A, std::list<int> B){
     else if(n == 1) {
         // //extend A until n = m
         // for(int i = 1; i < m; i++)
-        //     A.push_back(A.front());
+        //     A.push_back(A.front());  
         //maxsum across pairs
         return *max_element(B.begin(), next(B.begin(), m)) + A.front();
     }
@@ -74,7 +74,7 @@ int main()
     getInput(n, &A, &mFile);
     getInput(m, &B, &mFile);
     mFile.close();
-
+    puts("testifg");
     cout << T(n, m, A, B) << endl;
     // cout<< "n = " << n << "\nm = " << m << "\nA = " << A.back() << "\nB = " << B.back() << endl;
 
