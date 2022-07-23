@@ -10,6 +10,7 @@
 using namespace std;
 
 void printOutput(std::list<int> A, std::list<int> B);
+void printOutput(std::list<int> A, std::list<int> B, int minDist);
 void extendT(list<int> *A, list<int> *B, map<pair<int, int>, pair<int, int> > E, int N, int M);
 int T(int n, int m, int N, int M, std::list<int> *A, std::list<int> *B, vector<vector<int>> *memo, map<pair<int, int>, pair<int, int> > *E);
 void Wrapper(int n, int m, list<int> A, list<int> B);
@@ -30,6 +31,20 @@ int main()
     Wrapper(n, m, A, B);
 }
 
+void printOutput(std::list<int> A, std::list<int> B, int minDist)
+{
+    ofstream mFile("output.txt");
+    mFile << minDist << endl;
+    list<int>::iterator itr1 = A.begin();
+    list<int>::iterator itr2 = B.begin();
+
+    while (itr1 != A.end() && itr2 != B.end())
+    {
+        mFile << *itr1 << " " << *itr2 << endl;
+        itr1++; itr2++;
+    }
+ 
+}
 
 void printOutput(std::list<int> A, std::list<int> B)
 {
